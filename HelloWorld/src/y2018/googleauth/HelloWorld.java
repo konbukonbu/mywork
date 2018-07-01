@@ -13,12 +13,12 @@ public class HelloWorld {
   public static final int CONST = 1;
 
   public static void main(String[] args) throws Exception {
-    //		AuthyApiClient client = new AuthyApiClient("73c2fe32-ffd7-4b37-acf7-ebbaefa110b3");
+    //		AuthyApiClient client = new AuthyApiClient("");
     //		System.out.println(client.getTokens().verify(123456, "123456"));
 
     GoogleAuthenticator gAuth = new GoogleAuthenticator();
     gAuth.setCredentialRepository(new MyCredentialRepository());
-    GoogleAuthenticatorKey key = gAuth.createCredentials("73c2fe32-ffd7-4b37-acf7-ebbaefa110b3");
+    GoogleAuthenticatorKey key = gAuth.createCredentials("");
     System.out.println(key.getVerificationCode());
   }
 
