@@ -24,6 +24,8 @@ import javax.swing.JTextArea;
  */
 public class PracticeSwingAwtApp extends JFrame implements ActionListener {
   /** 芝生が生えるかテストやねん*/
+  //https://qiita.com/Ryuryu346/items/f896beb0e2ae2197cc5b
+  //https://findy-code.io/engineer-lab/github-contributions-rule#i-2
   private final static String TOOL_VERSION = "0.900";
   private final static String TOOL_TITLE_NAME = "素敵ツールやねん";
 
