@@ -23,6 +23,7 @@ import javax.swing.JTextArea;
  * @author adachi
  */
 public class PracticeSwingAwtApp extends JFrame implements ActionListener {
+  /** 芝生が生えるかテストやねん*/
   private final static String TOOL_VERSION = "0.900";
   private final static String TOOL_TITLE_NAME = "素敵ツールやねん";
 
