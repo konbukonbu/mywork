@@ -1,6 +1,7 @@
 package y2018.awt;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,6 +57,7 @@ public class PracticeSwingAwtApp extends JFrame implements ActionListener {
 
     JPanel textPanel = new JPanel();
     textPanel.add(scrollpane);
+    textPanel.setBackground(Color.GRAY);
     return textPanel;
   }
 
@@ -65,6 +67,7 @@ public class PracticeSwingAwtApp extends JFrame implements ActionListener {
 
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(button);
+    buttonPanel.setBackground(Color.ORANGE);
     return buttonPanel;
   }
 
