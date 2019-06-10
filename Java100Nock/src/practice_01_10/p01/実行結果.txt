@@ -1,0 +1,26 @@
+C:\Users\adachi\Desktop\開発作業\eclipseWS\Java100Nock\src\practice_01_10\p01>"C:\Program Files\Java\jdk1.8.0_91\bin\java.exe" -version
+java version "1.8.0_91"
+Java(TM) SE Runtime Environment (build 1.8.0_91-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.91-b14, mixed mode)
+
+C:\Users\adachi\Desktop\開発作業\eclipseWS\Java100Nock\src\practice_01_10\p01>"C:\Program Files\Java\jdk1.8.0_91\bin\javac.exe" ./HelloWorld.java
+
+C:\Users\adachi\Desktop\開発作業\eclipseWS\Java100Nock\src\practice_01_10\p01>dir
+ ドライブ C のボリューム ラベルは OS です
+ ボリューム シリアル番号は E898-7C29 です
+
+ C:\Users\adachi\Desktop\開発作業\eclipseWS\Java100Nock\src\practice_01_10\p01 のディレクトリ
+
+2019/06/05  06:36    <DIR>          .
+2019/06/05  06:36    <DIR>          ..
+2019/06/05  06:36               444 HelloWorld.class
+2019/06/05  06:30               145 HelloWorld.java
+               2 個のファイル                 589 バイト
+               2 個のディレクトリ  106,304,114,688 バイトの空き領域
+
+C:\Users\adachi\Desktop\開発作業\eclipseWS\Java100Nock\src\practice_01_10\p01>cd ..
+
+C:\Users\adachi\Desktop\開発作業\eclipseWS\Java100Nock\src\practice_01_10>cd ..
+
+C:\Users\adachi\Desktop\開発作業\eclipseWS\Java100Nock\src>java practice_01_10.p01.HelloWorld
+Hello World
