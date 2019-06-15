@@ -1,0 +1,25 @@
+C:\Users\adachi\Desktop\作業領域\音楽\感動の講義>cd C:\Users\adachi\git\mywork\Java100Nock\src\practice_01_10\p01
+
+C:\Users\adachi\git\mywork\Java100Nock\src\practice_01_10\p01>dir
+ ドライブ C のボリューム ラベルは OS です
+ ボリューム シリアル番号は E898-7C29 です
+
+ C:\Users\adachi\git\mywork\Java100Nock\src\practice_01_10\p01 のディレクトリ
+
+2019/06/05  06:38    <DIR>          .
+2019/06/05  06:38    <DIR>          ..
+2019/06/05  06:36               444 HelloWorld.class
+2019/06/05  06:30               145 HelloWorld.java
+2019/06/05  06:43             1,381 実行結果.txt
+               3 個のファイル               1,970 バイト
+               2 個のディレクトリ  106,466,594,816 バイトの空き領域
+
+C:\Users\adachi\git\mywork\Java100Nock\src\practice_01_10\p01>java -Xms1024M -Xmx1024M HelloWorld
+エラー: メイン・クラスHelloWorldが見つからなかったかロードできませんでした
+
+C:\Users\adachi\git\mywork\Java100Nock\src\practice_01_10\p01>cd ..
+
+C:\Users\adachi\git\mywork\Java100Nock\src\practice_01_10>cd ..
+
+C:\Users\adachi\git\mywork\Java100Nock\src>java -Xms1024M -Xmx1024M practice_01_10.p01.HelloWorld
+Hello World
