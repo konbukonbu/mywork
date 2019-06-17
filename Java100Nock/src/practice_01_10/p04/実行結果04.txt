@@ -1,0 +1,11 @@
+C:\Program Files\AdoptOpenJDK\jdk-8.0.212.04-hotspot\bin>cd C:\Users\adachi\git\201906_gitwork\mywork\Java100Nock\src
+
+C:\Users\adachi\git\201906_gitwork\mywork\Java100Nock\src>java -version
+openjdk version "1.8.0_212"
+OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_212-b04)
+OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.212-b04, mixed mode)
+
+C:\Users\adachi\git\201906_gitwork\mywork\Java100Nock\src>java practice_01_10.p01.HelloWorld
+Hello World
+
+C:\Users\adachi\git\201906_gitwork\mywork\Java100Nock\src>
