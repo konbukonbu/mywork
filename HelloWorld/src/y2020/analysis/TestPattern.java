@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class TestPattern {
 
   private static final Pattern PATTERN_PROCEDURE_DIVISION_START = Pattern.compile(".*PROCEDURE[ 　]*DIVISION\\..*");
-  private static final Pattern PATTERN_SECTION_START = Pattern.compile(".*SECTION\\..*");
+  private static final Pattern PATTERN_SECTION_START = Pattern.compile(".*[ 　]SECTION\\..*");
 
   public static void main(String[] args) {
 
