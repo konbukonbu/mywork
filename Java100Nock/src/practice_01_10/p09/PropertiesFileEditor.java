@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * JavaのUnicode文字列の変換用処理<BR>
+ * JavaのUnicode文字列の変換用の処理<BR>
  * "あ" <-> "\u3042"
  *
  * @see https://qiita.com/sifue/items/039846cf8415efdc5c92
