@@ -79,7 +79,7 @@ public class PropertiesFileEditor {
   /**
    * コードポイント値が0x10000～0x10FFFFのサロゲートペア文字でもunicodeエスケープ文字列に変換できるよう改良したメソッド<br>
    * "𩸽" -> "\ud867\ude3d"(UTF-8だと４バイトになるぞよ）<br>
-   * なお、[=]まで、エスケープしてしまうと、プロパティファイルの読み込みに失敗するため、＝は処理対象外とする。
+   * なお、[=]まで、エスケープしてしまうと、プロパティファイルの読み込みに失敗するため、＝以前は処理対象外とする。
    *
    * @see https://www.softel.co.jp/blogs/tech/archives/596
    * @see https://qiita.com/simiraaaa/items/cb29714293e012be77c3
@@ -88,11 +88,20 @@ public class PropertiesFileEditor {
   public static String toUnicode2(final String original, boolean toUpper) {
     final char[] chars = original.toCharArray();
     final int len = chars.length;
+
+    boolean equalDiscoveredFlg = false;
     StringBuilder sb = new StringBuilder(len * UNICODE_RATE);
     for (int i = 0; i < len; ++i) {
       final String hexString = Integer.toHexString((int) chars[i]);
-      if ('=' == (chars[i])) {// =は対象外
-        sb.append("=");
+
+      // ＝以前は対象外
+      if ('=' == (chars[i])) {
+        equalDiscoveredFlg = true;
+        sb.append(chars[i]);
+        continue;
+      }
+      if (equalDiscoveredFlg == false) {
+        sb.append(chars[i]);
         continue;
       }
 

@@ -5,7 +5,8 @@ import java.util.ResourceBundle;
 
 public class PropertyFileReader {
 
-  private static final String OUTPUT_FILE_NAME = "output09";
+  // private static final String OUTPUT_FILE_NAME = "output09";
+  private static final String OUTPUT_FILE_NAME = "output09_02";
 
   public static void main(String[] args) throws IOException {
     readPropertiesFile();
