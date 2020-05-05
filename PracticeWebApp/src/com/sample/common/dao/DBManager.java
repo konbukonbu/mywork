@@ -1,4 +1,4 @@
-package com.sample.message.common;
+package com.sample.common.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

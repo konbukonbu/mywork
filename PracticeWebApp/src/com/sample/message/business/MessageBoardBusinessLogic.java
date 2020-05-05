@@ -4,10 +4,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sample.common.dao.DBManager;
 import com.sample.message.bean.MessageBean;
 import com.sample.message.bean.MessageBoardListBean;
 import com.sample.message.check.MessageBoardRegisterCheck;
-import com.sample.message.common.DBManager;
 import com.sample.message.dao.MessageDao;
 import com.sample.message.dao.MessageEntity;
 import com.sample.message.exception.BusinessLogicException;

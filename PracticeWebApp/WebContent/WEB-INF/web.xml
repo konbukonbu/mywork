@@ -17,11 +17,28 @@
     <servlet-name>MessageBoardListServlet</servlet-name>
     <servlet-class>com.sample.message.servlet.MessageBoardListServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UserIdRegisterServlet</servlet-name>
+    <servlet-class>com.sample.googleauth.servlet.UserIdRegisterServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GoogleAuthLoginServlet</servlet-name>
+    <servlet-class>com.sample.googleauth.servlet.GoogleAuthLoginServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>MessageBoardListServlet</servlet-name>
     <url-pattern>/messageBoardListServlet</url-pattern>
   </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>UserIdRegisterServlet</servlet-name>
+    <url-pattern>/userIdRegisterServlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>GoogleAuthLoginServlet</servlet-name>
+    <url-pattern>/googleAuthLoginServlet</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>page/messageBoardList.jsp</welcome-file>
+    <!-- <welcome-file>page/messageBoardList.jsp</welcome-file> -->
+    <welcome-file>page/googleauth/userIdRegister.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
