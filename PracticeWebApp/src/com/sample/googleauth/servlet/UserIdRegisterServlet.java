@@ -26,7 +26,7 @@ public class UserIdRegisterServlet extends HttpServlet {
    */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    UserIdRegisterBean userIdRegisterBean = createBeanFromRequestParameter(request);
+    UserIdRegisterBean bean = createBeanFromRequestParameter(request);
 
     // 認証に必要なクライアント・サーバで保持する共通鍵を生成する.
     // ======================================================
@@ -38,7 +38,7 @@ public class UserIdRegisterServlet extends HttpServlet {
     // =======================================================
     // Entityを生成し、ユーザーID、共通鍵を設定.
     UserAuthEntity entity = new UserAuthEntity();
-    entity.userId = userIdRegisterBean.getUserId();// ユーザーID（リクパラ）
+    entity.userId = bean.getUserId();// ユーザーID（リクパラ）
     entity.commonKey = commonKey;// 共通鍵
 
     // entityとconnectionをもとにDB登録処理を実行.
@@ -48,7 +48,7 @@ public class UserIdRegisterServlet extends HttpServlet {
 
     // クライアントに渡す認証用URLを生成する.
     // =======================================================
-    String userId = userIdRegisterBean.getUserId();// ユーザーID
+    String userId = bean.getUserId();// ユーザーID
     String serviceName = "adachi.jp";// サービス名
     String authUrl = "otpauth://totp/" + serviceName + ":" + userId + "?secret=" + commonKey + "&issuer=" + serviceName;
     // =======================================================

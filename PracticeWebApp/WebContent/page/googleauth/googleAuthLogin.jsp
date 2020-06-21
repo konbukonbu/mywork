@@ -24,7 +24,7 @@
         <tr>
           <td width = "100px">認証コード(googleAuthencticatorにて表示されるOPT)</td>
           <td width = "600px" align="left">
-            <input type="text" name="userId" size="20" maxLength="6"/>（半角6文字）
+            <input type="text" name="authCode" size="20" maxLength="6"/>（半角6文字）
           </td>
         </tr>
     </table>

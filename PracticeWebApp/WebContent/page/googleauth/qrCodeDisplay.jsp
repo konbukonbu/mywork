@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.sample.googleauth.bean.QRCodeDisplayBean"%>
 <jsp:useBean id="qrCodeDisplayBean" scope="session" class="com.sample.googleauth.bean.QRCodeDisplayBean" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -17,7 +18,7 @@ $(function() {
         {
             width: 300,
             height: 300,
-            text: '<c:out value="${qrCodeDisplayBean.authUrl}" />'
+            text:'<%= ((QRCodeDisplayBean)request.getAttribute("qrCodeDisplayBean")).getAuthUrl() %>'
         }
     );
 });
@@ -27,7 +28,8 @@ $(function() {
 <br>
 
 <B>googleAuthenticator用のURLを表示(文字列）</B><br>
-&nbsp;&nbsp;<c:out value="${qrCodeDisplayBean.authUrl}" />
+<%= ((QRCodeDisplayBean)request.getAttribute("qrCodeDisplayBean")).getAuthUrl() %>
+
 <br><br>
 googleAuthenticatorをインストールしたうえで、↑のURLを登録してください...<br>
 <B><U>この画面のURLが流出されるとアウト</U></B>なので、覗き見されんようにしてくだせぇ...(；´Д｀)<br><br>

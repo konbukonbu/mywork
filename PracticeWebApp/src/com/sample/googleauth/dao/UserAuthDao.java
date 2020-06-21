@@ -1,9 +1,11 @@
 package com.sample.googleauth.dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
 
 public class UserAuthDao {
 
@@ -27,5 +29,31 @@ public class UserAuthDao {
       return insertNumber;
     }
     return insertNumber;
+  }
+
+  /**
+   * DBのメッセージ一覧を全件取得する。
+   *
+   * @param connection
+   * @return
+   */
+  public static String getCommonKey(Connection connection, String userid) {
+    StringBuilder selectSql = new StringBuilder("SELECT COMMON_KEY FROM USER_AUTH ");
+    selectSql.append("WHERE USER_ID = " + "'" + userid + "'");
+    Statement statement = null;
+    ResultSet resultSet = null;
+    String commonKey = "";
+    try {
+      statement = (Statement) connection.createStatement();
+      resultSet = statement.executeQuery(selectSql.toString());
+
+      resultSet.next();
+      commonKey = resultSet.getString("COMMON_KEY");
+      System.out.println(commonKey);
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return commonKey;
   }
 }
