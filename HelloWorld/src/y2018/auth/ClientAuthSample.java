@@ -19,7 +19,7 @@ public class ClientAuthSample {
 
   private static void exec共通鍵を発行_URIを生成() {
     String serviceName = "zaif.jp";
-    String userId = "tkbfj573@yahoo.co.jp";
+    String userId = "konbu@yahoo.co.jp";
 
     GoogleAuthenticator gAuth = new GoogleAuthenticator();
     GoogleAuthenticatorKey key = gAuth.createCredentials();
