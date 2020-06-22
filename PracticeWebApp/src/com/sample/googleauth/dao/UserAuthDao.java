@@ -13,14 +13,14 @@ public class UserAuthDao {
    * 引数のEntityをもとに、DBにユーザー認証情報を登録する
    */
   public static int register(Connection connection, UserAuthEntity entity) {
-    StringBuilder registerSql = new StringBuilder("INSERT INTO USER_AUTH (USER_ID,COMMON_KEY)");
+    StringBuilder registerSql = new StringBuilder("INSERT INTO USER_AUTH (USER_ID,SECRET_KEY)");
     registerSql.append("VALUES(?,?)");
     PreparedStatement statement = null;
     int insertNumber = 0;
     try {
       statement = (PreparedStatement) connection.prepareStatement(registerSql.toString());
       statement.setString(1, entity.userId);
-      statement.setString(2, entity.commonKey);
+      statement.setString(2, entity.secretKey);
       insertNumber = statement.executeUpdate();
     } catch (SQLException e) {
       System.out.println(registerSql.toString());
@@ -37,8 +37,8 @@ public class UserAuthDao {
    * @param connection
    * @return
    */
-  public static String getCommonKey(Connection connection, String userid) {
-    StringBuilder selectSql = new StringBuilder("SELECT COMMON_KEY FROM USER_AUTH ");
+  public static String getSecretKey(Connection connection, String userid) {
+    StringBuilder selectSql = new StringBuilder("SELECT SECRET_KEY FROM USER_AUTH ");
     selectSql.append("WHERE USER_ID = " + "'" + userid + "'");
     Statement statement = null;
     ResultSet resultSet = null;
@@ -48,7 +48,7 @@ public class UserAuthDao {
       resultSet = statement.executeQuery(selectSql.toString());
 
       resultSet.next();
-      commonKey = resultSet.getString("COMMON_KEY");
+      commonKey = resultSet.getString("SECRET_KEY");
       System.out.println(commonKey);
 
     } catch (SQLException e) {

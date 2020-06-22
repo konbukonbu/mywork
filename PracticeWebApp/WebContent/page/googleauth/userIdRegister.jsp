@@ -18,7 +18,7 @@
         <tr>
           <td width = "100px">ユーザーID</td>
           <td width = "600px" align="left">
-            <input type="text" name="userId" size="100" maxLength="255"/>（半角255文字）
+            <input type="text" name="userId" size="80" maxLength="255"/>（半角255文字）
           </td>
         </tr>
     </table>

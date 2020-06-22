@@ -9,5 +9,5 @@ public class UserAuthEntity {
   /** ユーザーID */
   public String userId;
   /** 共通鍵 */
-  public String commonKey;
+  public String secretKey;
 }

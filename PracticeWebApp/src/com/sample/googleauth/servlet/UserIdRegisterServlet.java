@@ -28,29 +28,29 @@ public class UserIdRegisterServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     UserIdRegisterBean bean = createBeanFromRequestParameter(request);
 
-    // 認証に必要なクライアント・サーバで保持する共通鍵を生成する.
+    // 認証に必要なクライアント・サーバで保持する秘密鍵(シード)を生成する.
     // ======================================================
     GoogleAuthenticatorKey key = new GoogleAuthenticator().createCredentials();
-    String commonKey = key.getKey();
+    String secretKey = key.getKey();// 秘密鍵(シード)
     // ======================================================
 
-    // 共通鍵をサーバ側でも保持するため、ユーザーIDとともにDB登録する.
+    // 秘密鍵をサーバ側でも保持するため、ユーザーIDとともにDB登録する.
     // =======================================================
-    // Entityを生成し、ユーザーID、共通鍵を設定.
+    // Entityを生成し、ユーザーID、秘密鍵を設定.
     UserAuthEntity entity = new UserAuthEntity();
     entity.userId = bean.getUserId();// ユーザーID（リクパラ）
-    entity.commonKey = commonKey;// 共通鍵
+    entity.secretKey = secretKey;// 秘密鍵
 
     // entityとconnectionをもとにDB登録処理を実行.
     DBManager dbManager = DBManager.getInstance();
     UserAuthDao.register(dbManager.getConnection(), entity);
     // =======================================================
 
-    // クライアントに渡す認証用URLを生成する.
+    // クライアントに返却する認証用URL(秘密鍵含む)を生成する.
     // =======================================================
     String userId = bean.getUserId();// ユーザーID
     String serviceName = "adachi.jp";// サービス名
-    String authUrl = "otpauth://totp/" + serviceName + ":" + userId + "?secret=" + commonKey + "&issuer=" + serviceName;
+    String authUrl = "otpauth://totp/" + serviceName + ":" + userId + "?secret=" + secretKey + "&issuer=" + serviceName;
     // =======================================================
 
     System.out.println("authUrl=" + authUrl);
