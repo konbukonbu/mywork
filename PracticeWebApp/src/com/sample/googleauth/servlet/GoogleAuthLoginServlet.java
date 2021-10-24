@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.sample.common.dao.DBManager;
 import com.sample.googleauth.bean.GoogleAuthLoginBean;
 import com.sample.googleauth.dao.UserAuthDao;
@@ -16,6 +18,11 @@ public class GoogleAuthLoginServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     GoogleAuthLoginBean bean = createBeanFromRequestParameter(request);
+    
+    //TODO 入力チェック処理を仮実装（未入力の場合はシステムエラーにする）時間があったらエラー処理を本実装。🐧
+    if(StringUtils.isEmpty(bean.getUserId())) {
+    	throw new RuntimeException("ユーザーIDが未入力やねん");
+    }
 
     // リクパラのユーザーIDをもとにDBから秘密鍵を取得
     // ======================================================

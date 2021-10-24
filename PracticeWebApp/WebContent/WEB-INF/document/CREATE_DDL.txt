@@ -5,3 +5,12 @@ CREATE TABLE MESSAGE
   CONTENT VARCHAR(100),
   REGISTER_DATE TIMESTAMP(0)
 );
+
+
+// データベースの作成状況によってはサーバ側の文字コードを認識しないと予期せぬエラーに、、、
+//デフォルトがlatin1とか、くそな文字コードになっているんで。。。
+// https://www.dbonline.jp/mysql/myini/index3.html#section3
+
+//すでに作っちまったテーブルの文字コードを変更する場合は、以下のような感じでALTER文かませばOK
+//https://accelboon.com/tn/mysql-incorrect-string-value-%E3%81%AE%E8%A7%A3%E6%B1%BA%E7%AD%96/
+ALTER TABLE message CONVERT TO CHARACTER SET utf8mb4;

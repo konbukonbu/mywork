@@ -12,8 +12,8 @@
 <title>ユーザーID登録</title>
 </head>
 <body>
-<!-- 登録領域 -->
-  <form method="post" action="userIdRegisterServlet">
+<!-- 登録領域-->
+  <form method="post" action="${pageContext.request.contextPath}/userIdRegisterServlet">
     <table border="1" height="70px" width="900px">
         <tr>
           <td width = "100px">ユーザーID</td>

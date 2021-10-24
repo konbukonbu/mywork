@@ -19,8 +19,14 @@ public class DBManager {
   // AWSのとき
   // private final static String URL =
   // "jdbc:mysql://aav0bacp73cqpm.cqe5ssi68kdb.us-east-1.rds.amazonaws.com:3306/test";
-  private final static String URL = "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8";
+  // MySQLのバージョンが5.7以降の場合、デフォルトでSSL有効になることに起因して接続失敗になる。
+  // SSL証明書とか作るのが大変だから、手っ取り早く接続する側で対応する場合は以下のように設定。
+  // https://hacknote.jp/archives/24742/
+  private final static String URL = "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false";
 
+//  private final static String URL = "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8
+  
+  
   /** ユーザー名 */
   private final static String USER_NAME = "root";
   /** パスワード */
