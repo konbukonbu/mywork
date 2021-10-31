@@ -15,27 +15,36 @@ import com.sample.googleauth.dao.UserAuthDao;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 
 public class GoogleAuthLoginServlet extends HttpServlet {
+  /** QRコード表示画面のJSPパス */
+  private static final String FORWARD_PATH_LOGIN_DISPLAY = "page/googleauth/googleAuthLogin.jsp";
+
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    GoogleAuthLoginBean bean = createBeanFromRequestParameter(request);
-    
+    GoogleAuthLoginBean googleAuthLoginBean = createBeanFromRequestParameter(request);
+
     //TODO 入力チェック処理を仮実装（未入力の場合はシステムエラーにする）時間があったらエラー処理を本実装。🐧
-    if(StringUtils.isEmpty(bean.getUserId())) {
-    	throw new RuntimeException("ユーザーIDが未入力やねん");
+    if (StringUtils.isEmpty(googleAuthLoginBean.getUserId())) {
+      throw new RuntimeException("ユーザーIDが未入力やねん");
     }
 
     // リクパラのユーザーIDをもとにDBから秘密鍵を取得
     // ======================================================
     DBManager dbManager = DBManager.getInstance();
-    String secretKey = UserAuthDao.getSecretKey(dbManager.getConnection(), bean.getUserId());
+    String secretKey = UserAuthDao.getSecretKey(dbManager.getConnection(), googleAuthLoginBean.getUserId());
     // ======================================================
 
     // 秘密鍵をもとに、リクパラの認証コードの妥当性を検証する.
     // ======================================================
-    int authCode = Integer.parseInt(bean.getAuthCode());// リクパラから認証コードを取得
+    int authCode = Integer.parseInt(googleAuthLoginBean.getAuthCode());// リクパラから認証コードを取得
     boolean isAuthCheckOK = new GoogleAuthenticator().authorize(secretKey, authCode);
     System.out.println("isAuthCheckOK = " + isAuthCheckOK);// true:認証成功
     // ======================================================
+
+    googleAuthLoginBean.setAuthChecked(true);
+    googleAuthLoginBean.setAuthCheckOK(isAuthCheckOK);
+    request.setAttribute("googleAuthLoginBean", googleAuthLoginBean);
+    request.getRequestDispatcher(FORWARD_PATH_LOGIN_DISPLAY).forward(request, response);
+
   }
 
   /**

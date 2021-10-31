@@ -12,6 +12,21 @@
 <title>ログイン</title>
 </head>
 <body>
+<HR/>
+
+<c:choose>
+  <c:when test="${googleAuthLoginBean.authChecked == false}">
+    GoogleAuthenticatorに表示のコードを入力し、認証するのじゃ(;´･ω･)
+  </c:when>
+  <c:when test="${googleAuthLoginBean.authCheckOK}">
+    認証チェックOKだぜ(｀・ω・´)ｼｬｷｰﾝ
+ </c:when>
+  <c:otherwise>
+    認証チェックNGだぜ(´・ω・｀;;)ｼｮﾎﾞｰﾝ
+  </c:otherwise>
+</c:choose>
+
+<HR/>
 <!-- 登録領域 -->
   <form method="post" action="${pageContext.request.contextPath}/googleAuthLoginServlet">
     <table border="1" height="50px" width="900px">

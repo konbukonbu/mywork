@@ -13,26 +13,44 @@
 <body>
 
 <script>
-$(function() {
+$(function() {//鍵付きのURL
     $('#qrcode').qrcode(
         {
-            width: 300,
-            height: 300,
+            width: 250,
+            height: 250,
             text:'<%= ((QRCodeDisplayBean)request.getAttribute("qrCodeDisplayBean")).getAuthUrl() %>'
         }
     );
 });
+
+$(function() {//GoogleAuthenticatorのダウンロード先
+    $('#qrcode2').qrcode(
+        {
+            width: 250,
+            height: 250,
+            text:'https://apps.apple.com/jp/app/google-authenticator/id388497605'
+        }
+    );
+});
+
 </script>
-<B>googleAuthenticator用のURLを表示(QRコード）</B><br>
-<div id="qrcode"></div>
+<HR/>
+<B>１．GoogleAuthenticatorに登録するURL</B><br>
+  <div id="qrcode"></div>
 <br>
-
-<B>googleAuthenticator用のURLを表示(文字列）</B><br>
+<B>登録対象のURLを文字列で表示</B><br>
 <%= ((QRCodeDisplayBean)request.getAttribute("qrCodeDisplayBean")).getAuthUrl() %>
+<br>
+・GoogleAuthenticatorをインストールしたうえで、↑のURLを登録してください...<br>
 
-<br><br>
-googleAuthenticatorをインストールしたうえで、↑のURLを登録してください...<br>
-<B><U>この画面のURLが流出されるとアウト</U></B>なので、覗き見されんようにしてくだせぇ...(；´Д｀)<br><br>
+<HR/>
+<B>２．GoogleAuthenticatorのダウンロード</B><br>
+・GoogleAuthenticatorをインストールしてない人は↓でインストしてくださいな。。。🐧<br>
+iPhoneのapp画面に遷移するぞよ。Androidの人は、、、めんどいから自分で探してちょんまげ(;´∀｀)<br>
+  <div id="qrcode2"></div>
+<HR/>
+
+<B><U>URLが流出されるとアウト</U></B>なので、覗き見されんようにしてくだせぇ...(；´Д｀)<br><br>
 サーバ側の実装をする人は以下を留意すること(； ･`ω･´)<br>
 1.HTMLをキャッシュさせないような作りにすること.<br>
 2.通信の暗号化を行うこと.<br><br>
