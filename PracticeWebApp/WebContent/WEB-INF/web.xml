@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--  
+https://teratail.com/questions/355566  2.5の書き方だとエラーになる。
+https://kokuzawa.github.io/blog/2015/04/07/web-dot-xmlfalsebaziyonbie-dtdxsdfalsexuan-yan-fang-fa/
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+ -->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
   <display-name>PracticeWebApp</display-name>
   <filter>
     <filter-name>EncodingFilter</filter-name>
@@ -17,11 +26,29 @@
     <servlet-name>MessageBoardListServlet</servlet-name>
     <servlet-class>com.sample.message.servlet.MessageBoardListServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UserIdRegisterServlet</servlet-name>
+    <servlet-class>com.sample.googleauth.servlet.UserIdRegisterServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GoogleAuthLoginServlet</servlet-name>
+    <servlet-class>com.sample.googleauth.servlet.GoogleAuthLoginServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>MessageBoardListServlet</servlet-name>
     <url-pattern>/messageBoardListServlet</url-pattern>
   </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>UserIdRegisterServlet</servlet-name>
+    <url-pattern>/userIdRegisterServlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>GoogleAuthLoginServlet</servlet-name>
+    <url-pattern>/googleAuthLoginServlet</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>page/messageBoardList.jsp</welcome-file>
+    <!-- <welcome-file>page/messageBoardList.jsp</welcome-file> -->
+    <!-- <welcome-file>page/googleauth/userIdRegister.jsp</welcome-file>-->
+    <welcome-file>page/welcomePage.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

@@ -23,7 +23,7 @@
   </table>
 
 <!-- 登録領域 -->
-  <form method="post" action="messageBoardListServlet">
+  <form method="post" action="${pageContext.request.contextPath}/messageBoardListServlet">
     <table border="1" height="100px" width="600px">
         <tr>
           <td width = "100px">タイトル</td>

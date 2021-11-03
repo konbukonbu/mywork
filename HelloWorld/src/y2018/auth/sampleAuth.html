@@ -1,0 +1,18 @@
+<body>
+
+<h2>QRコード表示画面</h2>
+<div id="qrcode"></div>
+<script type="text/javascript" src="./jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="./jquery.qrcode.min.js"></script>
+<script>
+$(function() {
+    $('#qrcode').qrcode(
+        {
+            width: 150,
+            height: 150,
+            text: 'otpauth://totp/zaif.jp:tkbfj573@yahoo.co.jp?secret=W3CJSLBISG76YZ4B&issuer=zaif.jp'
+        }
+    );
+});
+</script>
+</body>

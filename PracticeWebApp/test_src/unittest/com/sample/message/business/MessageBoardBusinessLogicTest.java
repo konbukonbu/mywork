@@ -8,9 +8,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.sample.common.dao.DBManager;
 import com.sample.message.bean.MessageBoardListBean;
 import com.sample.message.business.MessageBoardBusinessLogic;
-import com.sample.message.common.DBManager;
 import com.sample.message.exception.BusinessLogicException;
 
 /**
