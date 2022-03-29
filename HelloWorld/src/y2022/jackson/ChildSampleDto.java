@@ -3,7 +3,7 @@ package y2022.jackson;
 public class ChildSampleDto {
   private String key3;
   private String key4;
-  
+
   public String getKey3() {
     return key3;
   }
@@ -15,5 +15,10 @@ public class ChildSampleDto {
   }
   public void setKey4(String key4) {
     this.key4 = key4;
+  }
+  
+  @Override
+  public String toString() {
+    return "ChildSampleDto [key3=" + key3 + ", key4=" + key4 + "]";
   }
 }

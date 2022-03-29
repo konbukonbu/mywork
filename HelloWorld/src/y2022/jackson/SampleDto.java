@@ -19,6 +19,10 @@ public class SampleDto implements Serializable{
   public void setKey1(String key1) {
     this.key1 = key1;
   }
+  @Override
+  public String toString() {
+    return "SampleDto [key1=" + key1 + ", key2=" + key2 + ", childDto=" + childDto + "]";
+  }
   public String getKey2() {
     return key2;
   }
