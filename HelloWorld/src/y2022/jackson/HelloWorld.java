@@ -20,14 +20,15 @@ public class HelloWorld {
 
   private static void exec_文字列をJacksonでデシリアライズ() throws JsonMappingException, JsonProcessingException {
     System.out.println("exec_文字列をJacksonでデシリアライズ");
-    
+
     //デシリアライズ対象のJSON文字列をセッティング
     String jsonString = "{\"key2\":\"value2\",\"childDto\":{\"key3\":\"value3\",\"key4\":\"\"}}";
     ObjectMapper mapper = new ObjectMapper();
     mapper = mapper.setSerializationInclusion(Include.NON_NULL);
-    
-    SampleDto sampleDto = mapper.readValue(jsonString, new TypeReference<SampleDto>() {});
-    
+
+    SampleDto sampleDto = mapper.readValue(jsonString, new TypeReference<SampleDto>() {
+    });
+
     //デシリアライズされたオブジェクトをtoStringするぞよ
     System.out.println(sampleDto.toString());//SampleDto [key1=null, key2=value2, childDto=ChildSampleDto [key3=value3, key4=]]　※nullと空文字も区別できるぜ
   }
@@ -48,9 +49,9 @@ public class HelloWorld {
     ObjectMapper mapper = new ObjectMapper();
     mapper = mapper.setSerializationInclusion(Include.NON_NULL);//nullなら出力しない
     String json = mapper.writeValueAsString(dto);
-    
+
     //シリアライズされたJSON文字列を出力
-    System.out.println(json);    //{"key2":"value2","childDto":{"key3":"value3","key4":""}}
+    System.out.println(json); //{"key2":"value2","childDto":{"key3":"value3","key4":""}}
   }
 
 }
