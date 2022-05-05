@@ -50,14 +50,19 @@ public class HelloWorldCsv {
     int recordCount = 0;
     try (CSVPrinter printer = new CSVPrinter(new BufferedWriter( //
         new OutputStreamWriter(new FileOutputStream(outputFilePath), charSet)), csvFormat)) {
-      
+
       for (SampleDataEntity dataEntity : dataEntityList) {
         recordCount++;
         printer.print(dataEntity.getFileKbn());
         printer.print(dataEntity.getShohinCode());
         printer.print(dataEntity.getShohinName());
         printer.print(dataEntity.getShohinPrice());
-        if(dataEntityList.size() > recordCount) {//最終行は改行しない
+
+        //最終行の取り決め、RFC 4180 としてはどちらでも良い
+        //https://blog.tech-monex.com/entry/2021/03/26/160000#2-1%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%B8%AD%E3%81%AE%E6%9C%80%E5%BE%8C%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%A1%8C%E6%9C%AB%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%A6%8F%E5%AE%9A
+        //改行コードを削除すると、誤動作を招く？？
+        //https://mina2.sama.to/asiplease/2019/09/-csv.html
+        if (dataEntityList.size() > recordCount) {//最終行は改行しない場合
           printer.println();
         }
       }
