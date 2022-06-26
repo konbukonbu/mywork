@@ -57,6 +57,7 @@ public class OSProcessExecSample {
       InputStream is = process.getInputStream(); //標準出力
       printInputStream(is);
 
+      System.out.println("判定処理");
       boolean isSuccess = process.waitFor(TIMEOUT_SEC, TimeUnit.SECONDS);
       if (isSuccess) {
 
