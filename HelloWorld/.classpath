@@ -16,5 +16,8 @@
 	<classpathentry kind="lib" path="lib/jackson-core-2.13.2.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-databind-2.13.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-csv-1.9.0.jar"/>
+	<classpathentry kind="lib" path="lib/spring-security-core-5.6.0.jar"/>
+	<classpathentry kind="lib" path="lib/spring-context-5.3.7.jar"/>
+	<classpathentry kind="lib" path="lib/spring-security-crypto-5.6.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

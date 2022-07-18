@@ -20,7 +20,7 @@ public class OSProcessExecSample {
 
   public static void main(String[] args) {
     execProcessBuilder("./input/timeout.bat");
-//    execProcessBuilder("./input/echoecho.bat");
+    //    execProcessBuilder("./input/echoecho.bat");
   }
 
   private static void execProcessBuilder(String cmd) {
@@ -52,7 +52,7 @@ public class OSProcessExecSample {
       // 注意点1と同じ現象が標準出力を読み込むタイミングで発生する.
       // 解決策としてはredirectErrorStreamにより、エラー出力を標準出力にリダイレクトマージし、
       // 1回の読み込みにより、バッファにたまっているストリームを読み出す処理を実施するということ。これによりデッドロックが解消される.
-      
+
       //注意3：標準出力処理を前に持っていくと、タイムアウト処理が機能しないことになる(コマンドの実行結果を待ち合わせることになるから）
       //ここは現在検討中
       // 時間監視をして、タイムオーバーになったら、Processをkillして、処理を抜けるとか、、、
