@@ -19,8 +19,7 @@ import com.sample.message.exception.BusinessLogicException;
  * 本クラスは直列化して利用することを想定していないためserialVersionUIDの定義はしない
  *
  * @author adachi
- * @see http
- *      ://www.ne.jp/asahi/hishidama/home/tech/java/serial.html#serialVersionUID
+ * @see http://www.ne.jp/asahi/hishidama/home/tech/java/serial.html#serialVersionUID
  */
 @SuppressWarnings("serial")
 public class MessageBoardListServlet extends HttpServlet {
@@ -28,6 +27,9 @@ public class MessageBoardListServlet extends HttpServlet {
   /** 掲示板リスト画面のJSPパス */
   private static final String FORWARD_PATH_MESSAGE_LIST = "page/messageBoardList.jsp";
 
+  /**
+   * 掲示板一覧画面のPostリクエストを処理する
+   */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -41,10 +43,14 @@ public class MessageBoardListServlet extends HttpServlet {
       messageBoardListBean.setMessageBeanList(messageList);
     } catch (BusinessLogicException e) {
       // 業務例外の場合は、例外オブジェクトが保持するエラーメッセージリストをセッションに格納し、掲示板一覧画面に遷移
+      System.out.println("業務処理実行時に業務例外が発生したため、エラー処理を行う.");
       ArrayList<String> errorMsgList = e.getErrorMsgList();
       request.setAttribute("errorMsgList", errorMsgList);
       request.getRequestDispatcher(FORWARD_PATH_MESSAGE_LIST).forward(request, response);
       return;
+    } catch (RuntimeException e) {
+      System.out.println("業務処理実行時に予期せぬRuntime例外が発生した.");
+      e.printStackTrace();
     }
 
     // 出力内容をセッションに設定する。
@@ -56,10 +62,10 @@ public class MessageBoardListServlet extends HttpServlet {
   }
 
   /**
-   * リクエストパラメータをもとにJavaBeanを作成する。
+   * リクエストパラメータをもとに掲示板一覧画面のJavaBeanを作成する。
    *
    * @param request
-   * @return
+   * @return 掲示板一覧画面のJavaBean
    */
   private MessageBoardListBean createBeanFromRequestParameter(HttpServletRequest request) {
     MessageBoardListBean messageBoardListBean = new MessageBoardListBean();
@@ -67,6 +73,5 @@ public class MessageBoardListServlet extends HttpServlet {
     messageBoardListBean.setContent(request.getParameter("content"));
     return messageBoardListBean;
   }
-
 
 }

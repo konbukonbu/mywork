@@ -5,9 +5,10 @@ import java.util.ResourceBundle;
 
 /**
  * プロパティファイルへアクセスするためのUtilクラス
- * TODO リファクタリング
+ * TODO リファクタリングとか、いろいろ見直し
  * @author adachi
  */
+@Deprecated
 public class PropertiesUtil {
 
   private static final long TTL = 1000 * 10;
