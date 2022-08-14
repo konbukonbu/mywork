@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 
+ * @author あっちー(;´Д`A ```
+ * @see https://zenn.dev/sugaryo/books/spring-boot-run-up/viewer/api_controller#%EF%BC%9E-javabean%E3%82%92%E8%BF%94%E3%81%97%E3%81%A6%E3%82%88%E3%81%97%E3%81%AA%E3%81%AB%E3%81%97%E3%81%A6%E3%82%82%E3%82%89%E3%81%86
+ */
 @RestController
 @RequestMapping("api")
 public class HelloWorldController {
