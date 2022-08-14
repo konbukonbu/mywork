@@ -57,6 +57,27 @@ public class HelloWorldController {
     String retString = "処理結果=SUCCESS" + "\r\n";
     retString = retString + "送ったファイル名=" + form.getUploadFile().getOriginalFilename() + "\r\n送ったファイルサイズ="
         + form.getUploadFile().getSize();
+
     return retString;
+    //実行結果のイメージ
+    //    PS C:\workspace\temp\20220815> curl.exe -i -X POST "http://localhost:8080/api/upload" -F "uploadFile=@./testFile.txt" -F  "key1=value1" -F "key2=value2"
+    //    HTTP/1.1 200
+    //    Content-Type: text/plain;charset=UTF-8
+    //    Content-Length: 110
+    //    Date: Sun, 14 Aug 2022 22:24:58 GMT
+    //
+    //    {'処理結果':'SUCCESS',
+    //    '送ったファイル名':'testFile.txt',
+    //    '送ったファイルサイズ':'47'}
+    //
+    //    PS C:\workspace\temp\20220815> curl.exe -i -X POST "http://localhost:8080/api/upload" -F "uploadFile=@./testFile.txt" -F  "key1=value1" -F "key2=value2"
+    //    HTTP/1.1 200
+    //    Content-Type: text/plain;charset=UTF-8
+    //    Content-Length: 94
+    //    Date: Sun, 14 Aug 2022 22:25:51 GMT
+    //
+    //    処理結果=SUCCESS
+    //    送ったファイル名=testFile.txt
+    //    送ったファイルサイズ=47
   }
 }
