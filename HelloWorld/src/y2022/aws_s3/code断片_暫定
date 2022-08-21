@@ -1,0 +1,46 @@
+  /**
+   * @see https://github.com/awsdocs/aws-doc-sdk-examples/blob/main/javav2/example_code/s3/src/main/java/com/example/s3/ListObjects.java
+   * @throws IOException
+   */
+  private static void execListObjects() throws IOException {
+
+    Region region = Region.US_EAST_2;
+    S3Client s3 = S3Client.builder().region(region).build();
+
+    String bucketName = "samplebkt001";
+    ListObjectsRequest listObjects = ListObjectsRequest
+        .builder()
+        .bucket(bucketName).prefix("test/test")
+        .build();
+
+    ListObjectsResponse res = s3.listObjects(listObjects);
+    List<S3Object> objects = res.contents();
+
+    for (S3Object myValue : objects) {
+      System.out.print("\n The name of the key is " + myValue.key());
+      System.out.print("\n The object is " + calKb(myValue.size()) + " KBs");
+      System.out.print("\n The owner is " + myValue.owner());
+    }
+
+    //     The name of the key is test/test/sampleTxt006.txt
+    //     The object is 0 KBs
+    //     The owner is Owner(ID=18b6532dd371759e6acd08f826615a3f30e19aff69f4210175b5d62810aaab40)
+    //     The name of the key is test/test/test3/
+    //     The object is 0 KBs
+    //     The owner is Owner(ID=18b6532dd371759e6acd08f826615a3f30e19aff69f4210175b5d62810aaab40)
+    //     The name of the key is test/test10/sampleTxt003.txt
+    //     The object is 0 KBs
+    //     The owner is Owner(ID=18b6532dd371759e6acd08f826615a3f30e19aff69f4210175b5d62810aaab40)
+    //     The name of the key is test/test2/sampleTxt002.txt
+    //     The object is 0 KBs
+    //     The owner is Owner(ID=18b6532dd371759e6acd08f826615a3f30e19aff69f4210175b5d62810aaab40)
+    //     The name of the key is test/testFile
+    //     The object is 30720 KBs
+    //     The owner is Owner(ID=18b6532dd371759e6acd08f826615a3f30e19aff69f4210175b5d62810aaab40)
+
+  }
+
+  //convert bytes to kbs.
+  private static long calKb(Long val) {
+    return val / 1024;
+  }
