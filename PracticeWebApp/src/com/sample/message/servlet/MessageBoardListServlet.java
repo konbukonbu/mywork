@@ -20,6 +20,8 @@ import com.sample.message.exception.BusinessLogicException;
  *
  * @author adachi
  * @see http://www.ne.jp/asahi/hishidama/home/tech/java/serial.html#serialVersionUID
+ * わかりやすい記事
+ * @see https://www.yoheim.net/blog.php?q=20120611
  */
 @SuppressWarnings("serial")
 public class MessageBoardListServlet extends HttpServlet {
