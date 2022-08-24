@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,9 +52,10 @@ public class HelloWorldController {
   //https://zenn.dev/yu1low/articles/f559f35c7087ef
   //curl.exe -i -X POST "http://localhost:8080/api/upload" -F "uploadFile=@./testFile.txt" -F  "key1=value1" -F "key2=value2"
   @RequestMapping(value = "/upload", method = RequestMethod.POST)
-  public String upload(SampleUploadForm form) {
+  public String upload(SampleUploadForm form, HttpServletRequest request) {
     System.out.println(form.getKey1() + "," + form.getKey2());
-
+    System.out.println(request.getHeader("Content-Type"));//multipart/form-data; boundary=------------------------1285d17706bff05b
+    System.out.println(request.getParameterMap());//{key1=[Ljava.lang.String;@7212164d, key2=[Ljava.lang.String;@4524dc60}
     //TODO ファイルの中身を取り出す処理
 
     //    String retString = "{'処理結果':'SUCCESS'," + "\r\n";
