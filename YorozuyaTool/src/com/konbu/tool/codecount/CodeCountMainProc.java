@@ -77,7 +77,7 @@ public class CodeCountMainProc {
       }
 
       filewriter.close();
-      System.out.println("[" + author + "]さんは[" + inputFromDate + "]から[" + inputToDate + "]の間に[" + totalCommitRowCnt + "]行コミットしました.(なお削除行もコミット行として加算しています.)");
+      System.out.println("[" + author + "]さんは[" + inputFromDate + "]から[" + inputToDate + "]の間に[" + totalCommitRowCnt + "]行コミットしました.");
 
     } catch (ParseException e) {
       e.printStackTrace();
